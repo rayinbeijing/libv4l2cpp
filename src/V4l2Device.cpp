@@ -114,10 +114,11 @@ int V4l2Device::checkCapabilities(int fd, unsigned int mandatoryCapabilities)
 	}
 	LOG(NOTICE) << "driver:" << cap.driver << " " << std::hex << cap.capabilities;
 		
-	if ((cap.capabilities & V4L2_CAP_READWRITE))    LOG(NOTICE) << m_params.m_devName << " support read/write";
-	if ((cap.capabilities & V4L2_CAP_VIDEO_OUTPUT)) LOG(NOTICE) << m_params.m_devName << " support output";
-	if ((cap.capabilities & V4L2_CAP_STREAMING))    LOG(NOTICE) << m_params.m_devName << " support streaming";
-	if ((cap.capabilities & V4L2_CAP_TIMEPERFRAME)) LOG(NOTICE) << m_params.m_devName << " support timeperframe"; 
+	if ((cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)) LOG(NOTICE) << m_params.m_devName << " support capture";
+	if ((cap.capabilities & V4L2_CAP_VIDEO_OUTPUT))  LOG(NOTICE) << m_params.m_devName << " support output";
+	if ((cap.capabilities & V4L2_CAP_READWRITE))     LOG(NOTICE) << m_params.m_devName << " support read/write";
+	if ((cap.capabilities & V4L2_CAP_STREAMING))     LOG(NOTICE) << m_params.m_devName << " support streaming";
+	if ((cap.capabilities & V4L2_CAP_TIMEPERFRAME))  LOG(NOTICE) << m_params.m_devName << " support timeperframe"; 
 	
 	if ( (cap.capabilities & mandatoryCapabilities) != mandatoryCapabilities )
 	{
